@@ -36,3 +36,4 @@
 - Implement Redux state and component testing using react-testing
 - Implement the project in TypeScript
 - Implement functionality to periodically re-download the game data file (in case it has updated)
+-  You dont need to set up a separate server/backend for the scope of this takehome. But it would be nice if you can import the data but use fetch/axios to make a get request
