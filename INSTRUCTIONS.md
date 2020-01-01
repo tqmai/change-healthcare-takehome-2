@@ -37,3 +37,16 @@
 - Implement the project in TypeScript
 - Implement functionality to periodically re-download the game data file (in case it has updated)
 -  You dont need to set up a separate server/backend for the scope of this takehome. But it would be nice if you can import the data but use fetch/axios to make a get request
+
+## Additional notes
+
+Though it usually isn't good to pre-optimize things, the goal of this take-home is to see how much do you know about React outside of what Codesmith taught you. 
+As a starting point look into: 
+- unnecessary rendering
+- css organization
+- unnecessary items in state
+- file structure
+- stylistic improvements 
+- hooks 
+
+It would be nice to have a brief writeup highlighting the technical decisions you've made. 
