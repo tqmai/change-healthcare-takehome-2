@@ -74,4 +74,5 @@ Design considerations:
 
 I stored the game data in an object whose keys are the "Order" of the games and values are all the other related game data.
 This helped with determining the correct order of games to display in the app because I could more easily access the "Order"
-property of each game (as compared to parsing through every entry to find the Order property).
+property of each game (as compared to parsing through every entry to find the Order property). This also allows for O(1) lookup
+time (as compared to iterating through an array).
