@@ -87,7 +87,13 @@ class GameListing extends React.Component {
           {detailsShown ? 'Hide Details' : 'Show Details'}
         </button>
 
-        {detailsShown && <ExtendedGameDetails slug={slug} gameFiles={gameFiles} categorySections={categorySections} />}
+        {detailsShown && (
+          <ExtendedGameDetails
+            slug={slug}
+            gameFiles={gameFiles}
+            categorySections={categorySections}
+          />
+        )}
       </div>
     );
   }
