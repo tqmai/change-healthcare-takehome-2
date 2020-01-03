@@ -72,7 +72,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 Design considerations:
 
-I stored the game data in an object whose keys are the "Order" of the games and values are all the other related game data.
-This helped with determining the correct order of games to display in the app because I could more easily access the "Order"
-property of each game (as compared to parsing through every entry to find the Order property). This also allows for O(1) lookup
-time (as compared to iterating through an array).
+I stored the game data in an object whose keys are the "Order" of the games and values are all the other related game data. This helped with determining the correct order of games to display in the app because I could more easily access the "Order" property of each game (as compared to parsing through every entry to find the Order property). This also allows for O(1) lookup time (as compared to iterating through an array).
+
+I used local state in the GameListing component because the rest of the application does not care about this data. I personally feel like it is unnecessary extra work to store the "detailsShown" value in a Redux store and have to use actions/reducers to modify that value.
