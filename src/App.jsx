@@ -12,7 +12,8 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import GameListing from './components/GameListing';
+// import GameListing from './components/GameListing';
+import GamesTable from './components/GamesTable';
 
 
 function App() {
@@ -39,8 +40,11 @@ function App() {
         yeet
       </p>
 
-      <GameListing ID={1} name="swaghi" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} />
-      <GameListing ID={10} name="swaghi2" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} />
+      {/* <GameListing ID={1} name="swaghi" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
+      {/* <GameListing ID={10} name="swaghi2" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
+
+      <GamesTable />
+
     </div>
   );
 }
