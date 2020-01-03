@@ -21,17 +21,8 @@ The order of the listing should be determined by the `Order` field in the games 
 // CONSIDER CONVERTING THIS INTO A FUNCTIONAL COMPONENT IF STATE IS NOT NEEDED
 
 class GamesTable extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {hi: 'hi'} // remove later - just here to stop annoying eslint messages
-  }
-
-  render() {
-    // access Redux store to get game data
-    // structure of data:
-    // REMEMBER TO UPDATE THIS WHEN USING PROPS
-    const gamesData = {
+  /* props contains an object with the following basic structure:
+  const gamesData = {
       2: {
         ID: 1,
         name: 'World of Warcraft',
@@ -51,9 +42,20 @@ class GamesTable extends React.Component {
         categorySections: [],
       },
     };
+  */
+
+  constructor(props) {
+    super(props);
+
+    this.state = {hi: 'hi'} // remove later - just here to stop annoying eslint messages
+  }
+
+  render() {
+    // pull out game data from props
+    const { gamesData } = this.props;
 
     // sort the data by "Order" property
-    // need to convert "Order" to number to be able to sort correctly
+    // note: need to convert "Order" to number to be able to sort correctly
     const gameOrderStrings = Object.keys(gamesData);
     const gameOrderNums = gameOrderStrings.map((numStr) => parseInt(numStr, 10));
     const sortedGameOrderNums = gameOrderNums.sort((a, b) => a - b);
