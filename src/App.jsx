@@ -19,7 +19,7 @@ import GamesTable from './components/GamesTable';
 function App() {
 
   const gamesData = {
-    2: {
+    4: {
       ID: 1,
       name: 'World of Warcraft',
       supportsAddons: true,
