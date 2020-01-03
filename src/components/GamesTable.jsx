@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import GameListing from './GameListing';
 
 /*
@@ -75,5 +76,9 @@ function GamesTable(props) {
     </div>
   );
 }
+
+GamesTable.propTypes = {
+  gamesData: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 export default GamesTable;
