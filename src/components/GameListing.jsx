@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ExtendedGameDetails from './ExtendedGameDetails';
 
 /*
@@ -26,31 +27,80 @@ class GameListing extends React.Component {
   - name (string)
   - supportsAddons (boolean)
   - supportsVoice (boolean)
-  */ 
-
-  /* 
-  GameListing will contain the ExtendedGameDetails component,
-  which will be rendered if the user chooses to do so
+  - slug (string)
+  - gameFiles (array of strings)
+  - categorySections (array of strings)
   */
 
-  // add button and toggle functionality
+  /*
+  GameListing will contain the ExtendedGameDetails component,
+  which will be rendered if detailsShow is true
+  */
 
   constructor(props) {
     super(props);
+
     this.state = {
       detailsShown: false, // UPDATE THIS when adding Redux
     };
-  }
-  
-  render() {
-    return (
-      <div>
-        <p>game listing</p>
-        {detailsShown && ExtendedGameDetails}
-      </div>
-    )
+
+    this.toggleDetailsButton = this.toggleDetailsButton.bind(this);
   }
 
+  toggleDetailsButton() {
+    this.setState((state) => ({
+      detailsShown: !state.detailsShown,
+    }));
+  }
+
+  render() {
+    const {
+      ID,
+      name,
+      supportsAddons,
+      supportsVoice,
+      slug,
+      gameFiles,
+      categorySections,
+    } = this.props;
+
+    const { detailsShown } = this.state;
+
+    // determine the correct image to display based on ID
+    const gameLogo = require(`../../public/images/${ID}.png`);
+
+    return (
+      <div>
+        <img src={gameLogo} alt="game logo" />
+        <h4>{name}</h4>
+        <p>
+          Supports Add-Ons:
+          {supportsAddons ? ' Yes' : ' No'}
+        </p>
+
+        <p>
+          Supports Voice:
+          {supportsVoice ? ' Yes' : ' No'}
+        </p>
+
+        <button onClick={this.toggleDetailsButton} type="button">
+          {detailsShown ? 'Hide Details' : 'Show Details'}
+        </button>
+
+        {detailsShown && <ExtendedGameDetails slug={slug} gameFiles={gameFiles} categorySections={categorySections} />}
+      </div>
+    );
+  }
 }
+
+GameListing.propTypes = {
+  ID: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  supportsAddons: PropTypes.bool.isRequired,
+  supportsVoice: PropTypes.bool.isRequired,
+  slug: PropTypes.string.isRequired,
+  gameFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categorySections: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default GameListing;
