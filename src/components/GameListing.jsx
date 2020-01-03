@@ -75,12 +75,14 @@ class GameListing extends React.Component {
         <h4>{name}</h4>
         <p>
           Supports Add-Ons:
-          {supportsAddons ? ' Yes' : ' No'}
+          {' '}
+          {supportsAddons ? 'Yes' : 'No'}
         </p>
 
         <p>
           Supports Voice:
-          {supportsVoice ? ' Yes' : ' No'}
+          {' '}
+          {supportsVoice ? 'Yes' : 'No'}
         </p>
 
         <button onClick={this.toggleDetailsButton} type="button">
