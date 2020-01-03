@@ -66,3 +66,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+***
+
+Design considerations:
+
+I stored the game data in an object whose keys are the "Order" of the games and values are all the other related game data.
+This helped with determining the correct order of games to display in the app because I could more easily access the "Order"
+property of each game (as compared to parsing through every entry to find the Order property).
