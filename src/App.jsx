@@ -14,6 +14,7 @@ import React from 'react';
 import './App.css';
 // import GameListing from './components/GameListing';
 import GamesTable from './components/GamesTable';
+import SearchBar from './components/SearchBar';
 
 
 function App() {
@@ -65,7 +66,9 @@ function App() {
       {/* <GameListing ID={1} name="swaghi" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
       {/* <GameListing ID={10} name="swaghi2" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
 
-      <GamesTable gamesData={gamesData} />
+      {/* <GamesTable gamesData={gamesData} /> */}
+
+      <SearchBar />
 
     </div>
   );
