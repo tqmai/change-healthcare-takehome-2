@@ -41,7 +41,7 @@ class GameListing extends React.Component {
     super(props);
 
     this.state = {
-      detailsShown: false, // UPDATE THIS when adding Redux
+      detailsShown: false, // see README for reasoning behind using local state here
     };
 
     this.toggleDetailsButton = this.toggleDetailsButton.bind(this);
