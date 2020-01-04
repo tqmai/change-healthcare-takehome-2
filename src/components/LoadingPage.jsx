@@ -2,9 +2,9 @@
  * ************************************
  *
  * @module  LoadingPage.js
- * @author
- * @date
- * @description 
+ * @author Timothy Mai
+ * @date 1/3/20
+ * @description component displayed while fetching data
  *
  * ************************************
  */
