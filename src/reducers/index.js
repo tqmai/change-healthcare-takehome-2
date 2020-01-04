@@ -10,10 +10,13 @@
  */
 
 // import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
 // // import all reducers here
 // import marketsReducer from './marketsReducer'; - TAKEN FROM MEGAMARKETS
 
+import searchReducer from './searchReducer';
+import dataReducer from './dataReducer';
 
 // // combine reducers
 // const reducers = combineReducers({
@@ -21,7 +24,12 @@
 //   markets: marketsReducer,
 // });
 
+const reducers = combineReducers({
+  search: searchReducer,
+  data: dataReducer,
+});
+
 // // make the combined reducers available for import
 // export default reducers;
 
-// ADD THIS LATER
+export default reducers;
