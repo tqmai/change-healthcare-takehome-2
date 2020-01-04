@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /* Instructions:
 When a user navigates to the app for the first time, the app should download the games data (from
@@ -17,17 +18,13 @@ games.json). While the game data is being fetched, an indication of progress sho
 */
 
 class LoadingPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true,
-      gamesData: {},
-      totalNumOfGames: 0,
-    };
-  }
-
   componentDidMount() {
-    const { gamesData } = this.state;
+    const {
+      gamesData,
+      addGameData,
+      setTotalNumOfGames,
+      toggleLoadingState,
+    } = this.props;
 
     // after component mounts, download the game data
     fetch('games.json')
@@ -37,9 +34,7 @@ class LoadingPage extends React.Component {
         const rawGameData = data.data;
 
         // this is to determine the total number of games to be downloaded
-        this.setState({
-          totalNumOfGames: rawGameData.length,
-        });
+        setTotalNumOfGames(rawGameData.length);
 
         rawGameData.forEach((game) => {
           gamesData[game.ID] = {
@@ -68,15 +63,19 @@ class LoadingPage extends React.Component {
 
           // after you parse the info for every game, update the state so that you can
           // indicate how many games have been processed
-          this.setState({
-            gamesData,
-          });
+          addGameData(gamesData);
         });
+
+        // after all games have been parsed, toggle the loading state
+        toggleLoadingState();
       });
   }
 
   render() {
-    const { gamesData, totalNumOfGames } = this.state;
+    const {
+      gamesData,
+      totalNumOfGames,
+    } = this.props;
 
     return (
       <div>
@@ -95,5 +94,13 @@ class LoadingPage extends React.Component {
     );
   }
 }
+
+LoadingPage.propTypes = {
+  gamesData: PropTypes.objectOf(PropTypes.object).isRequired,
+  totalNumOfGames: PropTypes.number.isRequired,
+  addGameData: PropTypes.func.isRequired,
+  setTotalNumOfGames: PropTypes.func.isRequired,
+  toggleLoadingState: PropTypes.func.isRequired,
+};
 
 export default LoadingPage;
