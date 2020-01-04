@@ -11,6 +11,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import './GameListing.css';
 import ExtendedGameDetails from './ExtendedGameDetails';
 
 /*
@@ -70,7 +71,7 @@ class GameListing extends React.Component {
     const gameLogo = require(`../../public/images/${ID}.png`);
 
     return (
-      <div>
+      <div className="GameListing">
         <img src={gameLogo} alt="game logo" />
         <h4>{name}</h4>
         <p>

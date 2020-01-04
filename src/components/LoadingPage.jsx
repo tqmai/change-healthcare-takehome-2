@@ -11,6 +11,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import './LoadingPage.css';
 
 /* Instructions:
 When a user navigates to the app for the first time, the app should download the games data (from
@@ -78,7 +79,7 @@ class LoadingPage extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="LoadingPage">
         <h2>
           Downloading game data...
         </h2>

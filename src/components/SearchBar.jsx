@@ -11,6 +11,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import './SearchBar.css';
 
 /* Instructions:
 Implement game search functionality
@@ -36,7 +37,7 @@ function SearchBar(props) {
   } = props;
 
   return (
-    <div>
+    <div className="SearchBar">
       <form>
         <p>
           Search:

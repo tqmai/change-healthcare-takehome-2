@@ -40,7 +40,7 @@ function App(props) {
   } = props;
 
   return (
-    <div>
+    <div className="App">
       <h1>
         The Greatest Game Data Loader Ever
       </h1>
