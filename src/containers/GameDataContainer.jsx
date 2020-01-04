@@ -12,7 +12,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as actions from '../actions/actions';
+import * as searchActions from '../actions/searchActions';
 import SearchBar from '../components/SearchBar';
 import GamesTable from '../components/GamesTable';
 
@@ -24,9 +24,9 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateSearchQuery: (event) => dispatch(actions.updateSearchQuery(event.target.value)),
-  toggleAddOns: () => dispatch(actions.toggleAddOns()),
-  toggleVoice: () => dispatch(actions.toggleVoice()),
+  updateSearchQuery: (event) => dispatch(searchActions.updateSearchQuery(event.target.value)),
+  toggleAddOns: () => dispatch(searchActions.toggleAddOns()),
+  toggleVoice: () => dispatch(searchActions.toggleVoice()),
 });
 
 function GameDataContainer(props) {
