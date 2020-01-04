@@ -13,6 +13,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 // import GameListing from './components/GameListing';
+import LoadingPage from './components/LoadingPage';
 import GameDataContainer from './containers/GameDataContainer';
 
 
@@ -43,7 +44,8 @@ function App() {
       {/* <GameListing ID={1} name="swaghi" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
       {/* <GameListing ID={10} name="swaghi2" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
 
-      <GameDataContainer />
+      <LoadingPage />
+      {/* <GameDataContainer /> */}
 
     </div>
   );
