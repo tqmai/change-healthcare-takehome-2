@@ -24,7 +24,7 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateSearchQuery: (query) => dispatch(actions.updateSearchQuery(query)),
+  updateSearchQuery: (event) => dispatch(actions.updateSearchQuery(event.target.value)),
   toggleAddOns: () => dispatch(actions.toggleAddOns()),
   toggleVoice: () => dispatch(actions.toggleVoice()),
 });
