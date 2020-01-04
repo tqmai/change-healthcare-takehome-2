@@ -33,10 +33,6 @@ function GamesTable(props) {
           ID: 1,
           FileName: 'file1',
         },
-        {
-          ID: 2,
-          FileName: 'file2',
-        },
       ],
       categorySections: [
         {
@@ -44,20 +40,6 @@ function GamesTable(props) {
           Name: 'cat1',
         },
       ],
-    },
-    3: {
-      ID: 10,
-      name: 'Coding Boi',
-      supportsAddons: false,
-      supportsVoice: true,
-      slug: 'cbi',
-      gameFiles: [
-        {
-          ID: 1,
-          FileName: 'file1',
-        },
-      ],
-      categorySections: [],
     },
   };
   */
@@ -124,7 +106,7 @@ function GamesTable(props) {
         slug={slug}
         gameFiles={gameFiles}
         categorySections={categorySections}
-      />
+      />,
     );
   });
 
