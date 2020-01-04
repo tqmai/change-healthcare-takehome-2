@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 /**
  * ************************************
  *
@@ -18,7 +19,8 @@ import store from './store';
 import * as serviceWorker from './serviceWorker';
 
 
-// I kept this as a .js file because otherwise the app won't compile (because of Create React App settings)
+// I kept this as a .js file because otherwise the app won't compile
+// (because of Create React App settings)
 ReactDOM.render(
   <Provider store={store}>
     <App />
