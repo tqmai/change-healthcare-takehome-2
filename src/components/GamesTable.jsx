@@ -56,16 +56,28 @@ function GamesTable(props) {
 
   // create an instance of GameListing for each game
   const gameListings = sortedGameOrderNums.map((gameOrderNum) => {
-    const game = gamesData[gameOrderNum];
+    // const game = gamesData[gameOrderNum];
+
+    const {
+      ID,
+      name,
+      supportsAddons,
+      supportsVoice,
+      slug,
+      gameFiles,
+      categorySections,
+    } = gamesData[gameOrderNum];
+
     return (
       <GameListing
-        ID={game.ID}
-        name={game.name}
-        supportsAddons={game.supportsAddons}
-        supportsVoice={game.supportsVoice}
-        slug={game.slug}
-        gameFiles={game.gameFiles}
-        categorySections={game.categorySections}
+        key={ID.toString()}
+        ID={ID}
+        name={name}
+        supportsAddons={supportsAddons}
+        supportsVoice={supportsVoice}
+        slug={slug}
+        gameFiles={gameFiles}
+        categorySections={categorySections}
       />
     );
   });
