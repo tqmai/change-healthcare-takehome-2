@@ -17,7 +17,7 @@ import SearchBar from '../components/SearchBar';
 import GamesTable from '../components/GamesTable';
 
 const mapStateToProps = (store) => ({
-  gamesData: store.data,
+  gamesData: store.data.gamesData,
   searchQuery: store.search.searchQuery,
   requireAddOns: store.search.requireAddOns,
   requireVoice: store.search.requireVoice,
