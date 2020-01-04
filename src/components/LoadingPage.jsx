@@ -22,6 +22,7 @@ class LoadingPage extends React.Component {
     this.state = {
       isLoading: true,
       gamesData: {},
+      totalNumOfGames: 0,
     };
   }
 
@@ -32,27 +33,13 @@ class LoadingPage extends React.Component {
     fetch('games.json')
       .then((response) => response.json())
       .then((data) => {
+        // parse through the data and save the relevant info
         const rawGameData = data.data;
-        // console.log('rawGameData', rawGameData);
 
-        /*
-        gameFiles: [
-          {
-            Id: 1,
-            FileName: 'file1',
-          },
-          {
-            Id: 2,
-            FileName: 'file2',
-          },
-        ],
-        categorySections: [
-          {
-            ID: 1,
-            Name: 'cat1',
-          },
-        ],
-        */
+        // do this to determine the total number of games
+        this.setState({
+          totalNumOfGames: rawGameData.length,
+        });
 
         rawGameData.forEach((game) => {
           gamesData[game.ID] = {
@@ -79,8 +66,8 @@ class LoadingPage extends React.Component {
             });
           });
 
-          console.log(gamesData);
-
+          // after you parse the info for every game, update the state so that you can
+          // indicate how many games have been processed
           this.setState({
             gamesData,
           });
@@ -89,7 +76,7 @@ class LoadingPage extends React.Component {
   }
 
   render() {
-    const { gamesData } = this.state;
+    const { gamesData, totalNumOfGames } = this.state;
 
     return (
       <div>
@@ -101,16 +88,12 @@ class LoadingPage extends React.Component {
           Games downloaded:
           {' '}
           {Object.keys(gamesData).length}
+          /
+          {totalNumOfGames}
         </h2>
       </div>
     );
   }
 }
-
-// use fetch/axios to get json data from games.json
-
-// https://create-react-app.dev/docs/fetching-data-with-ajax-requests
-// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-// https://github.com/axios/axios
 
 export default LoadingPage;
