@@ -22,8 +22,8 @@ Component must show the following data
 function ExtendedGameDetails(props) {
   /* props contains the following:
   - slug (string)
-  - gameFiles (array of strings)
-  - categorySections (array of strings)
+  - gameFiles (array of objects)
+  - categorySections (array of objects)
   */
 
   const {
