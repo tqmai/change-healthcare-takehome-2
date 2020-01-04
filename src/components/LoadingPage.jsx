@@ -79,17 +79,17 @@ class LoadingPage extends React.Component {
 
     return (
       <div>
-        <h1>
-          Downloading game data...
-        </h1>
-
         <h2>
+          Downloading game data...
+        </h2>
+
+        <h3>
           Games downloaded:
           {' '}
           {Object.keys(gamesData).length}
           /
           {totalNumOfGames}
-        </h2>
+        </h3>
       </div>
     );
   }
