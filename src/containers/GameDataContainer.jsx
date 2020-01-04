@@ -1,10 +1,10 @@
 /**
  * ************************************
  *
- * @module  MainContainer
- * @author
- * @date
- * @description stateful component that renders TotalsDisplay and MarketsContainer
+ * @module  GameDataContainer.jsx
+ * @author Timothy Mai
+ * @date 1/3/20
+ * @description stateful component that renders SearchBar and GamesTable
  *
  * ************************************
  */
@@ -14,6 +14,10 @@
 // // import from child components...
 // import TotalsDisplay from '../components/TotalsDisplay.jsx';
 // import MarketsContainer from './MarketsContainer.jsx';
+
+import React from 'react';
+import SearchBar from '../components/SearchBar';
+import GamesTable from '../components/GamesTable';
 
 // // mapStateToProps will take the entire redux store state as its argument
 // // technically it's the "state value", not the "store instance", but for now we will call it store for clarity
@@ -45,7 +49,47 @@
 
 // }
 
+class GameDataContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    const gamesData = {
+      4: {
+        ID: 1,
+        name: 'World of Warcraft',
+        supportsAddons: true,
+        supportsVoice: false,
+        slug: 'wow',
+        gameFiles: ['file1', 'file2'],
+        categorySections: ['cat1'],
+      },
+      3: {
+        ID: 10,
+        name: 'Coding Boi',
+        supportsAddons: false,
+        supportsVoice: true,
+        slug: 'cbi',
+        gameFiles: ['file1', 'file2'],
+        categorySections: [],
+      },
+    };
+
+    return (
+      <div>
+        <SearchBar />
+
+        <GamesTable gamesData={gamesData} />
+      </div>
+    );
+  }
+}
+
 // // connect will always require two arguments
 // // but since we are not access mapDispatchToProps we pass null as a second value
 // export default connect(mapStateToProps, null)(MainContainer);
 
+export default GameDataContainer;

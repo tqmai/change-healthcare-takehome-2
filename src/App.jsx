@@ -13,32 +13,33 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 // import GameListing from './components/GameListing';
-import GamesTable from './components/GamesTable';
-import SearchBar from './components/SearchBar';
+// import GamesTable from './components/GamesTable';
+// import SearchBar from './components/SearchBar';
+import GameDataContainer from './containers/GameDataContainer';
 
 
 function App() {
 
-  const gamesData = {
-    4: {
-      ID: 1,
-      name: 'World of Warcraft',
-      supportsAddons: true,
-      supportsVoice: false,
-      slug: 'wow',
-      gameFiles: ['file1', 'file2'],
-      categorySections: ['cat1'],
-    },
-    3: {
-      ID: 10,
-      name: 'Coding Boi',
-      supportsAddons: false,
-      supportsVoice: true,
-      slug: 'cbi',
-      gameFiles: ['file1', 'file2'],
-      categorySections: [],
-    },
-  };
+  // const gamesData = {
+  //   4: {
+  //     ID: 1,
+  //     name: 'World of Warcraft',
+  //     supportsAddons: true,
+  //     supportsVoice: false,
+  //     slug: 'wow',
+  //     gameFiles: ['file1', 'file2'],
+  //     categorySections: ['cat1'],
+  //   },
+  //   3: {
+  //     ID: 10,
+  //     name: 'Coding Boi',
+  //     supportsAddons: false,
+  //     supportsVoice: true,
+  //     slug: 'cbi',
+  //     gameFiles: ['file1', 'file2'],
+  //     categorySections: [],
+  //   },
+  // };
 
   return (
     // <div className="App">
@@ -68,7 +69,9 @@ function App() {
 
       {/* <GamesTable gamesData={gamesData} /> */}
 
-      <SearchBar />
+      {/* <SearchBar /> */}
+
+      <GameDataContainer />
 
     </div>
   );
