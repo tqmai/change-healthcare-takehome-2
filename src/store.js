@@ -13,12 +13,18 @@
 // import { composeWithDevTools } from 'redux-devtools-extension';
 // import reducers from './reducers/index';
 
+import { createStore } from 'redux';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+import reducers from './reducers/index';
+
 // // we are adding composeWithDevTools here to get easy access to the Redux dev tools
 // const store = createStore(
 //   reducers,
 //   composeWithDevTools()
 // );
 
+const store = createStore(reducers);
+
 // export default store;
 
-// GET BACK TO THIS WHEN WE START ADDING STATE
+export default store;
