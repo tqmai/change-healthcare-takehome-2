@@ -76,6 +76,8 @@ I stored the game data in an object whose keys are the "Order" of the games and 
 
 I used local state in the GameListing component because the rest of the application does not care about this data. I personally feel like it is unnecessary extra work to store the "detailsShown" value in a Redux store and have to use actions/reducers to modify that value.
 
-In the game data, game files have a key called "Id" (instead of "ID"). I kept the naming convention in state to match that of the imported data.
-
 I separated the reducers into two files grouped by function. This was to make it clearer which actions were related.
+
+When importing the data, I chose to parse through it instead of saving it all directly in the store. This way, I can reduce data usage while also allowing for progress status of the importing of data.
+
+I chose not to order the games by their "Order" property because many games share the same Order value. I opted instead to order by ID because the games all have unique IDs.
