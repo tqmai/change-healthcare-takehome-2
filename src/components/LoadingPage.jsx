@@ -36,7 +36,7 @@ class LoadingPage extends React.Component {
         // parse through the data and save the relevant info
         const rawGameData = data.data;
 
-        // do this to determine the total number of games
+        // this is to determine the total number of games to be downloaded
         this.setState({
           totalNumOfGames: rawGameData.length,
         });
