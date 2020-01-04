@@ -12,7 +12,6 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  // gamesData: {},
   searchQuery: '',
   requireAddOns: false,
   requireVoice: false,
@@ -20,11 +19,6 @@ const initialState = {
 
 function searchReducer(state = initialState, action) {
   switch (action.type) {
-    // case types.ADD_GAME_DATA:
-    //   return {
-    //     ...state,
-    //   };
-
     case types.UPDATE_SEARCH_QUERY:
       return {
         ...state,
