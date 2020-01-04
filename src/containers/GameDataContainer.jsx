@@ -53,6 +53,9 @@ function GameDataContainer(props) {
 
       <GamesTable
         gamesData={gamesData}
+        searchQuery={searchQuery}
+        requireAddOns={requireAddOns}
+        requireVoice={requireVoice}
       />
     </div>
   );
