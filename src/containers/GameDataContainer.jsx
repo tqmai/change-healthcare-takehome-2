@@ -9,45 +9,24 @@
  * ************************************
  */
 
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// // import from child components...
-// import TotalsDisplay from '../components/TotalsDisplay.jsx';
-// import MarketsContainer from './MarketsContainer.jsx';
-
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions';
 import SearchBar from '../components/SearchBar';
 import GamesTable from '../components/GamesTable';
 
-// // mapStateToProps will take the entire redux store state as its argument
-// // technically it's the "state value", not the "store instance", but for now we will call it store for clarity
-// const mapStateToProps = store => ({
-//   //within mapStateToProps we will return an object that contains all of the data for our component
-//   // Each key in the object will become a prop for your actual component
-//   // The values in the key will be used to determine if your component needs to re-render
-//   totalCards: store.markets.totalCards,
-//   totalMarkets: store.markets.totalMarkets
-// });
+const mapStateToProps = (store) => ({
+  gamesData: store.data, // CHECK IF THIS WORKS
+  searchQuery: store.search.searchQuery,
+  requireAddOns: store.search.requireAddOns,
+  requireVoice: store.search.requireVoice,
+});
 
-// class MainContainer extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
-//     return (
-//       <div className="container">
-//         <div className="outerBox">
-//           <h1 id="header">MegaMarket Loyalty Cards</h1>
-//           {/* now we can pass our totalCards and totalMarkets props that we defined above */}
-//           <TotalsDisplay totalCards={this.props.totalCards} totalMarkets={this.props.totalMarkets} />
-//           <MarketsContainer />
-//         </div>
-//       </div>
-//     )
-//   }
-
-// }
+const mapDispatchToProps = (dispatch) => ({
+  updateSearchQuery: (query) => dispatch(actions.updateSearchQuery(query)),
+  toggleAddOns: () => dispatch(actions.toggleAddOns()),
+  toggleVoice: () => dispatch(actions.toggleVoice()),
+});
 
 class GameDataContainer extends React.Component {
   constructor(props) {
@@ -57,51 +36,45 @@ class GameDataContainer extends React.Component {
   }
 
   render() {
-    const gamesData = {
-      4: {
-        ID: 1,
-        name: 'World of Warcraft',
-        supportsAddons: true,
-        supportsVoice: false,
-        slug: 'wow',
-        gameFiles: [
-          {
-            Id: 1,
-            FileName: 'file1',
-          },
-          {
-            Id: 2,
-            FileName: 'file2',
-          },
-        ],
-        categorySections: [
-          {
-            ID: 1,
-            Name: 'cat1',
-          },
-        ],
-      },
-      3: {
-        ID: 10,
-        name: 'Coding Boi',
-        supportsAddons: false,
-        supportsVoice: true,
-        slug: 'cbi',
-        gameFiles: [
-          {
-            Id: 1,
-            FileName: 'file1',
-          },
-        ],
-        categorySections: [],
-      },
-    };
+    /*
+    const mapStateToProps = (store) => ({
+      gamesData: store.data, // CHECK IF THIS WORKS
+      searchQuery: store.search.searchQuery,
+      requireAddOns: store.search.requireAddOns,
+      requireVoice: store.search.requireVoice,
+    });
+    
+    const mapDispatchToProps = (dispatch) => ({
+      updateSearchQuery: (query) => dispatch(actions.updateSearchQuery(query)),
+      toggleAddOns: () => dispatch(actions.toggleAddOns()),
+      toggleVoice: () => dispatch(actions.toggleVoice()),
+    });
+    */
+
+    const {
+      gamesData,
+      searchQuery,
+      requireAddOns,
+      requireVoice,
+      updateSearchQuery,
+      toggleAddOns,
+      toggleVoice,
+    } = this.props;
 
     return (
       <div>
-        <SearchBar />
+        <SearchBar
+          searchQuery={searchQuery}
+          requireAddOns={requireAddOns}
+          requireVoice={requireVoice}
+          updateSearchQuery={updateSearchQuery}
+          toggleAddOns={toggleAddOns}
+          toggleVoice={toggleVoice}
+        />
 
-        <GamesTable gamesData={gamesData} />
+        <GamesTable
+          gamesData={gamesData}
+        />
       </div>
     );
   }
@@ -111,4 +84,5 @@ class GameDataContainer extends React.Component {
 // // but since we are not access mapDispatchToProps we pass null as a second value
 // export default connect(mapStateToProps, null)(MainContainer);
 
-export default GameDataContainer;
+// export default GameDataContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(GameDataContainer);
