@@ -26,25 +26,82 @@ class LoadingPage extends React.Component {
   }
 
   componentDidMount() {
-    let gameData;
+    const { gamesData } = this.state;
 
     // after component mounts, download the game data
     fetch('games.json')
       .then((response) => response.json())
       .then((data) => {
-        gameData = data;
-        console.log(gameData);
+        const rawGameData = data.data;
+        // console.log('rawGameData', rawGameData);
+
+        /*
+        gameFiles: [
+          {
+            Id: 1,
+            FileName: 'file1',
+          },
+          {
+            Id: 2,
+            FileName: 'file2',
+          },
+        ],
+        categorySections: [
+          {
+            ID: 1,
+            Name: 'cat1',
+          },
+        ],
+        */
+
+        rawGameData.forEach((game) => {
+          gamesData[game.ID] = {
+            ID: game.ID,
+            name: game.Name,
+            supportsAddons: game.SupportsAddons,
+            supportsVoice: game.SupportsVoice,
+            slug: game.Slug,
+            gameFiles: [],
+            categorySections: [],
+          };
+
+          game.GameFiles.forEach((file) => {
+            gamesData[game.ID].gameFiles.push({
+              ID: file.Id,
+              FileName: file.FileName,
+            });
+          });
+
+          game.CategorySections.forEach((cat) => {
+            gamesData[game.ID].categorySections.push({
+              ID: cat.ID,
+              Name: cat.Name,
+            });
+          });
+
+          console.log(gamesData);
+
+          this.setState({
+            gamesData,
+          });
+        });
       });
-
-
   }
 
   render() {
+    const { gamesData } = this.state;
+
     return (
       <div>
         <h1>
           Downloading game data...
         </h1>
+
+        <h2>
+          Games downloaded:
+          {' '}
+          {Object.keys(gamesData).length}
+        </h2>
       </div>
     );
   }
