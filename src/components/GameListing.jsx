@@ -34,7 +34,7 @@ class GameListing extends React.Component {
 
   /*
   GameListing will contain the ExtendedGameDetails component,
-  which will be rendered if detailsShow is true
+  which will be rendered if detailsShown is true
   */
 
   constructor(props) {
