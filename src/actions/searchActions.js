@@ -1,10 +1,10 @@
 /**
  * ************************************
  *
- * @module  actions.js
+ * @module  searchActions.js
  * @author Timothy Mai
  * @date 1/3/20
- * @description action creators
+ * @description search action creators
  *
  * ************************************
  */
