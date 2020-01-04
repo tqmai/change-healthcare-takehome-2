@@ -10,75 +10,78 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /* Instructions:
 Implement game search functionality
 */
 
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: '',
-      requireAddOns: false,
-      requireVoice: false,
-    }; // update when adding Redux
+function SearchBar(props) {
+  /* props contains:
+    searchQuery (string)
+    requireAddOns (boolean)
+    requireVoice (boolean)
+    updateSearchQuery (function)
+    toggleAddOns (function)
+    toggleVoice (function)
+  */
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
+  const {
+    searchQuery,
+    requireAddOns,
+    requireVoice,
+    updateSearchQuery,
+    toggleAddOns,
+    toggleVoice,
+  } = props;
 
-  handleInputChange(event) {
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
+  return (
+    <div>
+      <form>
+        <p>
+          Search:
+          {' '}
+          <input
+            name="searchQuery"
+            type="text"
+            value={searchQuery}
+            onChange={updateSearchQuery}
+          />
+        </p>
 
-    this.setState({
-      [name]: value,
-    });
-  }
+        <p>
+          <input
+            name="requireAddOns"
+            type="checkbox"
+            checked={requireAddOns}
+            onChange={toggleAddOns}
+          />
+          {' '}
+          Supports Add-Ons
+        </p>
 
-  render() {
-    const { searchQuery, requireAddOns, requireVoice } = this.state;
-
-    return (
-      <div>
-        <form>
-          <p>
-            Search:
-            {' '}
-            <input
-              name="searchQuery"
-              type="text"
-              value={searchQuery}
-              onChange={this.handleInputChange}
-            />
-          </p>
-
-          <p>
-            <input
-              name="requireAddOns"
-              type="checkbox"
-              checked={requireAddOns}
-              onChange={this.handleInputChange}
-            />
-            {' '}
-            Supports Add-Ons
-          </p>
-
-          <p>
-            <input
-              name="requireVoice"
-              type="checkbox"
-              checked={requireVoice}
-              onChange={this.handleInputChange}
-            />
-            {' '}
-            Supports Voice
-          </p>
-        </form>
-      </div>
-    );
-  }
+        <p>
+          <input
+            name="requireVoice"
+            type="checkbox"
+            checked={requireVoice}
+            onChange={toggleVoice}
+          />
+          {' '}
+          Supports Voice
+        </p>
+      </form>
+    </div>
+  );
 }
+
+SearchBar.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
+  requireAddOns: PropTypes.bool.isRequired,
+  requireVoice: PropTypes.bool.isRequired,
+  updateSearchQuery: PropTypes.func.isRequired,
+  toggleAddOns: PropTypes.func.isRequired,
+  toggleVoice: PropTypes.func.isRequired,
+};
 
 export default SearchBar;
