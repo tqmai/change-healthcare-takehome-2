@@ -20,8 +20,8 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       searchQuery: '',
-      addOns: false,
-      voice: false,
+      requireAddOns: false,
+      requireVoice: false,
     }; // update when adding Redux
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -38,7 +38,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const { searchQuery, addOns, voice } = this.state;
+    const { searchQuery, requireAddOns, requireVoice } = this.state;
 
     return (
       <div>
@@ -56,9 +56,9 @@ class SearchBar extends React.Component {
 
           <p>
             <input
-              name="addOns"
+              name="requireAddOns"
               type="checkbox"
-              checked={addOns}
+              checked={requireAddOns}
               onChange={this.handleInputChange}
             />
             {' '}
@@ -67,9 +67,9 @@ class SearchBar extends React.Component {
 
           <p>
             <input
-              name="voice"
+              name="requireVoice"
               type="checkbox"
-              checked={voice}
+              checked={requireVoice}
               onChange={this.handleInputChange}
             />
             {' '}
