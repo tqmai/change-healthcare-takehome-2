@@ -62,8 +62,22 @@ function GamesTable(props) {
     };
   */
 
-  // pull out game data from props
-  const { gamesData } = props;
+  /* props also contains:
+  searchQuery (string)
+  requireAddOns (boolean)
+  requireVoice (boolean)
+  */
+
+  // pull out data from props
+  const {
+    gamesData,
+    searchQuery,
+    requireAddOns,
+    requireVoice,
+  } = props;
+
+  // this will be used to make case-insensitive searches
+  const lowercaseSearchQuery = searchQuery.toLowerCase();
 
   // sort the data by "Order" property
   // note: need to convert "Order" to number to be able to sort correctly
@@ -71,12 +85,11 @@ function GamesTable(props) {
   const gameOrderNums = gameOrderStrings.map((numStr) => parseInt(numStr, 10));
   const sortedGameOrderNums = gameOrderNums.sort((a, b) => a - b);
 
-  // filter games by search parameters - REMEMBER TO DO THIS
+  // filter games by search parameters
+  // create an instance of GameListing for each non-filtered game
+  const gameListings = [];
 
-  // create an instance of GameListing for each game
-  const gameListings = sortedGameOrderNums.map((gameOrderNum) => {
-    // const game = gamesData[gameOrderNum];
-
+  sortedGameOrderNums.forEach((gameOrderNum) => {
     const {
       ID,
       name,
@@ -87,7 +100,21 @@ function GamesTable(props) {
       categorySections,
     } = gamesData[gameOrderNum];
 
-    return (
+    // this will be used to make case-insensitive searches
+    const lowercaseName = name.toLowerCase();
+
+    // if game does not meet conditions, then filter it out
+    if (lowercaseName.indexOf(lowercaseSearchQuery) === -1) {
+      return;
+    }
+    if (requireAddOns && !supportsAddons) {
+      return;
+    }
+    if (requireVoice && !supportsVoice) {
+      return;
+    }
+
+    gameListings.push(
       <GameListing
         key={ID.toString()}
         ID={ID}
@@ -110,6 +137,9 @@ function GamesTable(props) {
 
 GamesTable.propTypes = {
   gamesData: PropTypes.objectOf(PropTypes.object).isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  requireAddOns: PropTypes.bool.isRequired,
+  requireVoice: PropTypes.bool.isRequired,
 };
 
 export default GamesTable;
