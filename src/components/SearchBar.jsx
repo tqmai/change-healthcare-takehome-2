@@ -18,33 +18,67 @@ Implement game search functionality
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {hi: 'hi'}; // update later
+    this.state = {
+      searchQuery: '',
+      addOns: false,
+      voice: false,
+    }; // update when adding Redux
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const { target } = event;
+    console.log('target', target);
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name } = target;
+    console.log('name', name)
+
+    this.setState({
+      [name]: value,
+    });
+
+    console.log(this.state);
   }
 
   render() {
+    const { searchQuery, addOns, voice } = this.state;
+
     return (
       <div>
         <form>
-          <label>
+          <p>
             Search:
-            <input type="text" />
-          </label>
+            {' '}
+            <input
+              name="searchQuery"
+              type="text"
+              value={searchQuery}
+              onChange={this.handleInputChange}
+            />
+          </p>
 
           <p>
-            <input type="checkbox" />
+            <input
+              name="addOns"
+              type="checkbox"
+              checked={addOns}
+              onChange={this.handleInputChange}
+            />
             {' '}
             Supports Add-Ons
           </p>
 
           <p>
-            <input type="checkbox" />
+            <input
+              name="voice"
+              type="checkbox"
+              checked={voice}
+              onChange={this.handleInputChange}
+            />
             {' '}
             Supports Voice
           </p>
-
-          <button type="submit">
-            Submit
-          </button>
         </form>
       </div>
     );
