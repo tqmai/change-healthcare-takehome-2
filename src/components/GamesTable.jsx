@@ -21,45 +21,45 @@ The order of the listing should be determined by the `Order` field in the games 
 
 function GamesTable(props) {
   /* props contains an object with the following basic structure:
-    const gamesData = {
-      4: {
-        ID: 1,
-        name: 'World of Warcraft',
-        supportsAddons: true,
-        supportsVoice: false,
-        slug: 'wow',
-        gameFiles: [
-          {
-            Id: 1,
-            FileName: 'file1',
-          },
-          {
-            Id: 2,
-            FileName: 'file2',
-          },
-        ],
-        categorySections: [
-          {
-            ID: 1,
-            FileName: 'cat1',
-          },
-        ],
-      },
-      3: {
-        ID: 10,
-        name: 'Coding Boi',
-        supportsAddons: false,
-        supportsVoice: true,
-        slug: 'cbi',
-        gameFiles: [
-          {
-            Id: 1,
-            FileName: 'file1',
-          },
-        ],
-        categorySections: [],
-      },
-    };
+  const gamesData = {
+    4: {
+      ID: 1,
+      name: 'World of Warcraft',
+      supportsAddons: true,
+      supportsVoice: false,
+      slug: 'wow',
+      gameFiles: [
+        {
+          ID: 1,
+          FileName: 'file1',
+        },
+        {
+          ID: 2,
+          FileName: 'file2',
+        },
+      ],
+      categorySections: [
+        {
+          ID: 1,
+          Name: 'cat1',
+        },
+      ],
+    },
+    3: {
+      ID: 10,
+      name: 'Coding Boi',
+      supportsAddons: false,
+      supportsVoice: true,
+      slug: 'cbi',
+      gameFiles: [
+        {
+          ID: 1,
+          FileName: 'file1',
+        },
+      ],
+      categorySections: [],
+    },
+  };
   */
 
   /* props also contains:

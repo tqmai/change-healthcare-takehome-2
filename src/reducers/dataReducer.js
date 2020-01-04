@@ -20,11 +20,11 @@ const gamesData = {
     slug: 'wow',
     gameFiles: [
       {
-        Id: 1,
+        ID: 1,
         FileName: 'file1',
       },
       {
-        Id: 2,
+        ID: 2,
         FileName: 'file2',
       },
     ],
@@ -43,7 +43,7 @@ const gamesData = {
     slug: 'cbi',
     gameFiles: [
       {
-        Id: 1,
+        ID: 1,
         FileName: 'file1',
       },
     ],

@@ -33,7 +33,7 @@ function ExtendedGameDetails(props) {
   } = props;
 
   const gameFilesLi = gameFiles.map((fileObj) => (
-    <li key={fileObj.Id}>
+    <li key={fileObj.ID}>
       {fileObj.FileName}
     </li>
   ));
