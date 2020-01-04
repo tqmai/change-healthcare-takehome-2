@@ -64,8 +64,22 @@ class GameDataContainer extends React.Component {
         supportsAddons: true,
         supportsVoice: false,
         slug: 'wow',
-        gameFiles: ['file1', 'file2'],
-        categorySections: ['cat1'],
+        gameFiles: [
+          {
+            Id: 1,
+            FileName: 'file1',
+          },
+          {
+            Id: 2,
+            FileName: 'file2',
+          },
+        ],
+        categorySections: [
+          {
+            ID: 1,
+            Name: 'cat1',
+          },
+        ],
       },
       3: {
         ID: 10,
@@ -73,7 +87,12 @@ class GameDataContainer extends React.Component {
         supportsAddons: false,
         supportsVoice: true,
         slug: 'cbi',
-        gameFiles: ['file1', 'file2'],
+        gameFiles: [
+          {
+            Id: 1,
+            FileName: 'file1',
+          },
+        ],
         categorySections: [],
       },
     };

@@ -32,9 +32,17 @@ function ExtendedGameDetails(props) {
     categorySections,
   } = props;
 
-  const gameFilesLi = gameFiles.map((file) => <li>{file}</li>);
+  const gameFilesLi = gameFiles.map((fileObj) => (
+    <li key={fileObj.Id}>
+      {fileObj.FileName}
+    </li>
+  ));
 
-  const categorySectionsLi = categorySections.map((cat) => <li>{cat}</li>);
+  const categorySectionsLi = categorySections.map((catObj) => (
+    <li key={catObj.ID}>
+      {catObj.Name}
+    </li>
+  ));
 
   return (
     <>
@@ -57,7 +65,7 @@ function ExtendedGameDetails(props) {
           Category Sections:
         </p>
         <ul>
-          {categorySectionsLi.length ? gameFilesLi : <li>None</li>}
+          {categorySectionsLi.length ? categorySectionsLi : <li>None</li>}
         </ul>
       </div>
     </>
@@ -66,8 +74,8 @@ function ExtendedGameDetails(props) {
 
 ExtendedGameDetails.propTypes = {
   slug: PropTypes.string.isRequired,
-  gameFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  categorySections: PropTypes.arrayOf(PropTypes.string).isRequired,
+  gameFiles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  categorySections: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ExtendedGameDetails;

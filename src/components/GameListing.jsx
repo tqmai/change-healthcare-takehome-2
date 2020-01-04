@@ -28,8 +28,8 @@ class GameListing extends React.Component {
   - supportsAddons (boolean)
   - supportsVoice (boolean)
   - slug (string)
-  - gameFiles (array of strings)
-  - categorySections (array of strings)
+  - gameFiles (array of objects)
+  - categorySections (array of objects)
   */
 
   /*
@@ -107,8 +107,8 @@ GameListing.propTypes = {
   supportsAddons: PropTypes.bool.isRequired,
   supportsVoice: PropTypes.bool.isRequired,
   slug: PropTypes.string.isRequired,
-  gameFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  categorySections: PropTypes.arrayOf(PropTypes.string).isRequired,
+  gameFiles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  categorySections: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default GameListing;
