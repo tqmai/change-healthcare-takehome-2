@@ -10,45 +10,63 @@
  */
 
 import React from 'react';
-// import logo from './logo.svg';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import * as dataActions from './actions/dataActions';
 import './App.css';
-// import GameListing from './components/GameListing';
 import LoadingPage from './components/LoadingPage';
 import GameDataContainer from './containers/GameDataContainer';
 
+const mapStateToProps = (store) => ({
+  isLoading: store.data.isLoading,
+  gamesData: store.data.gamesData,
+  totalNumOfGames: store.data.totalNumOfGames,
+});
 
-function App() {
+const mapDispatchToProps = (dispatch) => ({
+  addGameData: (data) => dispatch(dataActions.addGameData(data)),
+  setTotalNumOfGames: (num) => dispatch(dataActions.setTotalNumOfGames(num)),
+  toggleLoadingState: () => dispatch(dataActions.toggleLoadingState()),
+});
+
+function App(props) {
+  const {
+    isLoading,
+    gamesData,
+    totalNumOfGames,
+    addGameData,
+    setTotalNumOfGames,
+    toggleLoadingState,
+  } = props;
+
   return (
-  // <div className="App">
-  //   <header className="App-header">
-  //     <img src={logo} className="App-logo" alt="logo" />
-  //     <p>
-  //       Edit <code>src/App.js</code> and save to reload.
-  //     </p>
-  //     <a
-  //       className="App-link"
-  //       href="https://reactjs.org"
-  //       target="_blank"
-  //       rel="noopener noreferrer"
-  //     >
-  //       Learn React
-  //     </a>
-  //   </header>
-  // </div>
-
     <div>
-      <p>
-        yeet
-      </p>
+      <h1>
+        The Greatest Game Data Loader Ever
+      </h1>
 
-      {/* <GameListing ID={1} name="swaghi" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
-      {/* <GameListing ID={10} name="swaghi2" supportsAddons supportsVoice={false} slug="wow" gameFiles={['yo', 'eyy']} categorySections={[]} /> */}
-
-      <LoadingPage />
-      {/* <GameDataContainer /> */}
-
+      {isLoading
+        ? (
+          <LoadingPage
+            gamesData={gamesData}
+            totalNumOfGames={totalNumOfGames}
+            addGameData={addGameData}
+            setTotalNumOfGames={setTotalNumOfGames}
+            toggleLoadingState={toggleLoadingState}
+          />
+        )
+        : <GameDataContainer />}
     </div>
   );
 }
 
-export default App;
+App.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  gamesData: PropTypes.objectOf(PropTypes.object).isRequired,
+  totalNumOfGames: PropTypes.number.isRequired,
+  addGameData: PropTypes.func.isRequired,
+  setTotalNumOfGames: PropTypes.func.isRequired,
+  toggleLoadingState: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
