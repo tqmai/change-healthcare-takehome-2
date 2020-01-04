@@ -39,6 +39,8 @@ function App(props) {
     toggleLoadingState,
   } = props;
 
+  // Loading Page will be rendered until game data is imported and parsed through
+  // then GameDataContainer will be rendered in its place
   return (
     <div className="App">
       <h1>
