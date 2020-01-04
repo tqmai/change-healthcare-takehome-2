@@ -29,16 +29,12 @@ class SearchBar extends React.Component {
 
   handleInputChange(event) {
     const { target } = event;
-    console.log('target', target);
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
-    console.log('name', name)
 
     this.setState({
       [name]: value,
     });
-
-    console.log(this.state);
   }
 
   render() {
