@@ -48,7 +48,8 @@ function ExtendedGameDetails(props) {
     <>
       <p>
         Slug:
-        {` ${slug}`}
+        {' '}
+        {slug}
       </p>
 
       <div>
